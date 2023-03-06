@@ -1,16 +1,30 @@
-<div class="p-grid">
+<div class="container ms-auto mt-lg-5">
   <h5>Login</h5>
-  <div class="p-col-12 p-md-6 p-lg-3">
-    <span class="p-input-icon-left">
-      <i class="pi pi-search"></i>
-      <input type="text" pInputText placeholder="enter your username" />
-    </span>
-  </div>
-  <div class="p-col-12 p-md-6 p-lg-3">
-    <span class="p-input-icon-left">
-      <i class="pi pi-search"></i>
-      <input type="text" pInputText placeholder="Search" />
-    </span>
-  </div>
-  <button class="btn btn-primary" (click)="logged()">login</button>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <span class="p-float-label">
+        <input
+          id="float-input"
+          type="text"
+          [formControlName]="'username'"
+          pInputText
+        />
+        <label for="float-input">Username</label>
+      </span>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+      <span class="p-float-label">
+        <input
+          id="float-input"
+          type="password"
+          pInputText
+          [formControlName]="'password'"
+        />
+        <label for="float-input">Password</label>
+      </span>
+    </div>
+    <button class="btn btn-primary ms-auto float-right" type="submit">
+      login
+    </button>
+  </form>
 </div>
