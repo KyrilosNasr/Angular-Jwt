@@ -1,1 +1,105 @@
-<p>register works!</p>
+<div class="container ms-auto mt-lg-5">
+  <div class="row">
+    <h5>Register</h5>
+    <form [formGroup]="form" (ngSubmit)="FormSubmition()">
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Email</label>
+        <input id="email" type="text" [formControlName]="'email'" pInputText />
+        <div *ngIf="f['email'].errors && f['email'].touched">
+          <div *ngIf="f['email'].errors['required']" class="text-danger mt-3">
+            email is required
+          </div>
+          <div *ngIf="f['email'].errors['email']" class="text-danger mt-3">
+            you must enter valid email
+          </div>
+        </div>
+      </div>
+
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Username</label>
+        <input
+          id="float-input1"
+          type="text"
+          formControlName="username"
+          pInputText
+        />
+        <div *ngIf="f['username'].errors && f['username'].touched">
+          <div
+            *ngIf="f['username'].errors['username']"
+            class="text-danger mt-3"
+          >
+            username is required
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Password</label>
+        <input
+          id="float-input"
+          type="password"
+          pInputText
+          [formControlName]="'password'"
+        />
+        <div *ngIf="f['password'].errors && f['password'].touched">
+          <div
+            *ngIf="f['password'].errors['required']"
+            class="text-danger mt-3"
+          >
+            password is required
+          </div>
+          <div
+            *ngIf="f['password'].errors['minlength']"
+            class="text-danger mt-3"
+          >
+            password must be at least 6 chracters
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Phone</label>
+        <input id="phone" type="number" formControlName="phone" pInputText />
+        <div *ngIf="f['phone'].errors && f['phone'].touched">
+          <div *ngIf="f['phone'].errors['required']" class="text-danger mt-3">
+            phone is required
+          </div>
+          <div *ngIf="f['phone'].errors['minlength']" class="text-danger mt-3">
+            phone must be at least 10 numbers
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Age</label>
+        <input id="age" type="number" formControlName="age" pInputText />
+        <div *ngIf="f['age'].errors && f['age'].touched">
+          <div *ngIf="f['age'].errors['required']" class="text-danger mt-3">
+            age is required
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Select User</label>
+        <p-dropdown
+          class=""
+          placeholder="select User Type"
+          [options]="employeeType"
+          formControlName="usertype"
+          (onchange)="selected()"
+          name="usertype"
+          optionLabel="name"
+        ></p-dropdown>
+        <div *ngIf="f['usertype'].errors && f['usertype'].touched">
+          <div
+            *ngIf="f['usertype'].errors['required']"
+            class="text-danger mt-3"
+          >
+            usertype is required
+          </div>
+        </div>
+      </div>
+      <br />
+      <button class="btn btn-primary ms-auto float-right" type="submit">
+        Register
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,30 +1,48 @@
 <div class="container ms-auto mt-lg-5">
-  <h5>Login</h5>
-  <form [formGroup]="form" (ngSubmit)="submitForm()">
-    <div class="p-col-12 p-md-6 p-lg-3">
-      <span class="p-float-label">
-        <input
-          id="float-input"
-          type="text"
-          [formControlName]="'username'"
-          pInputText
-        />
-        <label for="float-input">Username</label>
-      </span>
-    </div>
-    <div class="p-col-12 p-md-6 p-lg-3">
-      <span class="p-float-label">
-        <input
-          id="float-input"
-          type="password"
-          pInputText
-          [formControlName]="'password'"
-        />
-        <label for="float-input">Password</label>
-      </span>
-    </div>
-    <button class="btn btn-primary ms-auto float-right" type="submit">
-      login
-    </button>
-  </form>
+  <div class="row justify-content-center">
+    <h5>Login</h5>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Username</label>
+        <input type="text" [formControlName]="'username'" pInputText />
+        <div *ngIf="f['username'].errors && f['username'].touched">
+          <div
+            *ngIf="f['username'].errors['required']"
+            class="text-danger mt-3"
+          >
+            username is required
+          </div>
+          <div
+            *ngIf="f['username'].errors['minlength']"
+            class="text-danger mt-3"
+          >
+            username must be at least 5 charcters
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-2">
+        <label class="mb-2 mx-3">Password</label>
+        <input type="password" pInputText [formControlName]="'password'" />
+        <div *ngIf="f['password'].errors && f['password'].touched">
+          <div
+            *ngIf="f['password'].errors['required']"
+            class="text-danger mt-3"
+          >
+            password is required
+          </div>
+          <div
+            *ngIf="f['password'].errors['minlength']"
+            class="text-danger mt-3"
+          >
+            password must be at least 6 charcters
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-primary ms-auto float-right" type="submit">
+          login
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

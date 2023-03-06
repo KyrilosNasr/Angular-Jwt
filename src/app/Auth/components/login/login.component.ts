@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -17,13 +18,17 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private readonly fb: FormBuilder) {
     this.form = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: [null, [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
   }
   ngOnInit(): void {}
   submitForm() {
     console.log('your from ', this.form.value);
+    this.logged();
   }
   logged() {
     this.router.navigateByUrl('employee');

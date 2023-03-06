@@ -1,12 +1,13 @@
 export interface User {
-  id: number;
-  name: string;
+  email: string;
+  username: string;
   password: string;
-  userName: string;
-  birthdate: Date;
+  sex: string;
+  phone: string;
+  age: string;
+  userType: string;
+  id?: number;
+  name?: string;
   netSallery?: number;
   address?: string;
-  mobile: number;
-  mail: string;
-  userType: string;
 }

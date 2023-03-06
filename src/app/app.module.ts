@@ -16,6 +16,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { LoginComponent } from './Auth/components/login/login.component';
 import { RegisterComponent } from './Auth/components/register/register.component';
 import { PasswordModule } from 'primeng/password';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PasswordModule } from 'primeng/password';
     InplaceModule,
     InputTextModule,
     PasswordModule,
+    CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

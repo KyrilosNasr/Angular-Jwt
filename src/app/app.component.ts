@@ -13,4 +13,7 @@ export class AppComponent {
   login() {
     this.router.navigateByUrl('auth/login');
   }
+  signup() {
+    this.router.navigateByUrl('auth/signup');
+  }
 }
